@@ -27,9 +27,12 @@ public class MainStringMethods {
                 contadorpapanoell1++;
             }
 
-            if(linea2.contains("*<]:-DOo")){
+            for (int i = 0; i < 2 ; i++) {
+                if(linea2.contains("*<]:-DOo")){
                 contadorpapanoell2++;
             }
+            }
+
 
             if(linea2.contains(">:o)")) {
                 contadorrenl2++;
