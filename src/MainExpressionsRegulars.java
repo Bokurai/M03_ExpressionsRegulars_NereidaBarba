@@ -4,27 +4,33 @@ import java.util.*;
 import java.util.regex.*;
 public class MainExpressionsRegulars {
     public static void main(String[] args) throws FileNotFoundException {
+        //declarem les variables necessàries
         File archivo = new File("santako.txt");
         Scanner lineas = new Scanner(archivo);
         Pattern follets = Pattern.compile("<]:-D");
         Pattern rens = Pattern.compile(">:o\\)");
         Pattern noel = Pattern.compile("\\*<]:-DOo");
 
+        String linea;
+        int contanoel;
+        int contarens;
+        int contafollet;
+
+        //bucle per escanejar i trobar les coincidencies
         while(lineas.hasNext()){
-            int contanoel = 0;
-            int contarens = 0;
-            int contafollet = 0;
+            contanoel = 0;
+            contarens = 0;
+            contafollet = 0;
 
-            String linea = lineas.nextLine();
-
+            linea = lineas.nextLine();
             Matcher noelMatch = noel.matcher(linea);
             Matcher folletMatch = follets.matcher(linea);
             Matcher rensMatch = rens.matcher(linea);
 
+            //si troben coincidències, les afegeixen al contador
             while (rensMatch.find()){
                 contarens++;
             }
-
             while (noelMatch.find()){
                 contanoel++;
                 contafollet--;
@@ -37,13 +43,13 @@ public class MainExpressionsRegulars {
 
             //formatem la resposta per adquirir la sortida desitjada
             if(contarens > 0){
-                res += "Ren ("+contarens+") ";
+                res += "Ren (" + contarens + ")";
             }
             if(contanoel> 0){
-                res += "Pare Noel ("+contanoel+") ";
+                res += "Pare Noel (" + contanoel + ")";
             }
             if(contafollet > 0){
-                res += "Follet ("+contafollet+") ";
+                res += "Follet (" + contafollet + ")";
             }
 
             //imprimir el resultat
